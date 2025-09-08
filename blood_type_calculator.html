@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Type Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        /* Custom table styling for better readability */
+        .blood-type-table th, .blood-type-table td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+        .blood-type-table th {
+            background-color: #fca5a5;
+            color: #7f1d1d;
+            font-weight: 600;
+        }
+        .blood-type-table td {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 p-4 sm:p-8">
+
+    <div class="container mx-auto max-w-4xl">
+        <!-- Title and Description -->
+        <header class="text-center mb-8">
+            <div class="flex flex-col sm:flex-row justify-center items-center">
+                <!-- SVG Blood Drop Image -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-16 h-16 sm:w-20 sm:h-20 mr-4">
+                    <defs>
+                        <linearGradient id="bloodGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#bloodGradient)" d="M50,95 Q80,80 85,50 A35,35 0 1 0 15,50 Q20,80 50,95 Z" />
+                    <circle cx="50" cy="50" r="30" fill="url(#bloodGradient)" />
+                    <path fill="#fff" opacity="0.4" d="M50,20 Q65,25 70,35 A30,30 0 0 0 50,20 Z" />
+                    <!-- Eyes -->
+                    <circle cx="40" cy="50" r="5" fill="#1f2937" />
+                    <circle cx="60" cy="50" r="5" fill="#1f2937" />
+                    <!-- Happy Mouth -->
+                    <path d="M40,65 Q50,75 60,65" stroke="#1f2937" stroke-width="2" fill="none" />
+                </svg>
+                <div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-red-600 mb-2">Blood Type Calculator</h1>
+                    <p class="text-lg text-gray-600">Discover the possible blood types of your children based on the parents' blood types. <br>For educational purposes only, please consult a medical professional for accurate information.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Table for Blood Type Combinations -->
+        <div class="mb-8 p-6 bg-red-50 rounded-3xl shadow-lg border border-red-100">
+            <h2 class="text-2xl font-bold text-center text-red-700 mb-6">Blood Type Combination Grid</h2>
+            <p class="text-center text-gray-600 mb-4">This table shows how two blood types combine. The result is what determines the child's possible blood type, which the calculator then determines for you.</p>
+            <div class="overflow-x-auto">
+                <table class="blood-type-table w-full rounded-xl overflow-hidden">
+                    <thead>
+                        <tr class="bg-red-300 text-red-900">
+                            <th class="p-3"></th>
+                            <th class="p-3">Parent 2: A</th>
+                            <th class="p-3">Parent 2: B</th>
+                            <th class="p-3">Parent 2: AB</th>
+                            <th class="p-3">Parent 2: O</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="p-3 bg-red-300 text-red-900">Parent 1: A</th>
+                            <td>A + A</td>
+                            <td>A + B</td>
+                            <td>A + AB</td>
+                            <td>A + O</td>
+                        </tr>
+                        <tr>
+                            <th class="p-3 bg-red-300 text-red-900">Parent 1: B</th>
+                            <td>B + A</td>
+                            <td>B + B</td>
+                            <td>B + AB</td>
+                            <td>B + O</td>
+                        </tr>
+                        <tr>
+                            <th class="p-3 bg-red-300 text-red-900">Parent 1: AB</th>
+                            <td>AB + A</td>
+                            <td>AB + B</td>
+                            <td>AB + AB</td>
+                            <td>AB + O</td>
+                        </tr>
+                        <tr>
+                            <th class="p-3 bg-red-300 text-red-900">Parent 1: O</th>
+                            <td>O + A</td>
+                            <td>O + B</td>
+                            <td>O + AB</td>
+                            <td>O + O</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+
+            <!-- Left Facts Section -->
+            <div class="bg-red-50 p-6 rounded-3xl shadow-lg border border-red-100">
+                <h2 class="text-2xl font-bold text-center text-red-700 mb-6">General Blood Facts</h2>
+                <div class="space-y-4">
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-red-100">
+                        <p class="font-medium text-red-600">Universal Donor and Recipient</p>
+                        <p class="text-sm text-gray-600">Blood type O-negative is the "universal donor," meaning it can be given to anyone. AB-positive is the "universal recipient," and can receive blood from any type. </p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-red-100">
+                        <p class="font-medium text-red-600">The Rarest Type</p>
+                        <p class="text-sm text-gray-600">AB-negative is the rarest blood type, occurring in less than 1% of the population. O-positive is the most common.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculator Section -->
+            <div class="bg-red-50 p-6 rounded-3xl shadow-lg border border-red-100">
+                <h2 class="text-2xl font-bold text-center text-red-700 mb-6">Parental Blood Types</h2>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-6 mb-8">
+                    <!-- Parent 1 Selection -->
+                    <div class="flex-1 w-full">
+                        <label for="parent1-type" class="block text-sm font-medium text-gray-700 mb-2 text-center">Parent 1</label>
+                        <select id="parent1-type" class="w-full p-3 border border-red-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                        <select id="parent1-rh" class="w-full mt-2 p-3 border border-red-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                            <option value="+">Rh+</option>
+                            <option value="-">Rh-</option>
+                        </select>
+                    </div>
+
+                    <div class="text-3xl font-bold text-red-500">+</div>
+
+                    <!-- Parent 2 Selection -->
+                    <div class="flex-1 w-full">
+                        <label for="parent2-type" class="block text-sm font-medium text-gray-700 mb-2 text-center">Parent 2</label>
+                        <select id="parent2-type" class="w-full p-3 border border-red-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                        <select id="parent2-rh" class="w-full mt-2 p-3 border border-red-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 transition-all">
+                            <option value="+">Rh+</option>
+                            <option value="-">Rh-</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Calculate Button -->
+                <button id="calculate-btn" class="w-full bg-red-600 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-500/50 transition-all duration-300">
+                    Calculate Possibilities
+                </button>
+
+                <!-- Result Box -->
+                <div id="result-box" class="mt-8 p-6 bg-white rounded-2xl shadow-inner border border-red-200 min-h-[150px] flex items-center justify-center">
+                    <p class="text-center text-gray-500 text-lg italic">The results will appear here.</p>
+                </div>
+            </div>
+
+            <!-- Right Facts Section -->
+            <div class="bg-red-50 p-6 rounded-3xl shadow-lg border border-red-100">
+                <h2 class="text-2xl font-bold text-center text-red-700 mb-6">Genetic Facts</h2>
+                <div class="space-y-4">
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-red-100">
+                        <p class="font-medium text-red-600">Why are there different types?</p>
+                        <p class="text-sm text-gray-600">Blood types are determined by the presence or absence of certain antigens on the surface of red blood cells. These antigens can trigger an immune response.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-red-100">
+                        <p class="font-medium text-red-600">Rh Factor</p>
+                        <p class="text-sm text-gray-600">The Rh factor is another antigen. If you have it, you're Rh-positive ($Rh^+$); if not, you're Rh-negative ($Rh^-$).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calculate-btn').addEventListener('click', calculateBloodType);
+
+        function calculateBloodType() {
+            // Get parent blood types and Rh factors
+            const parent1Type = document.getElementById('parent1-type').value;
+            const parent1Rh = document.getElementById('parent1-rh').value;
+            const parent2Type = document.getElementById('parent2-type').value;
+            const parent2Rh = document.getElementById('parent2-rh').value;
+
+            // Map blood types to their possible allele combinations
+            const alleleMap = {
+                'A': ['A', 'O'],
+                'B': ['B', 'O'],
+                'AB': ['A', 'B'],
+                'O': ['O', 'O']
+            };
+
+            const parent1Alleles = alleleMap[parent1Type];
+            const parent2Alleles = alleleMap[parent2Type];
+            
+            // Map Rh factors to their possible allele combinations
+            const rhAlleleMap = {
+                '+': ['+', '-'],
+                '-': ['-', '-']
+            };
+
+            const parent1RhAlleles = rhAlleleMap[parent1Rh];
+            const parent2RhAlleles = rhAlleleMap[parent2Rh];
+
+            const possibleTypes = new Set();
+            const possibleRh = new Set();
+            
+            // Calculate blood type combinations
+            for (const a1 of parent1Alleles) {
+                for (const a2 of parent2Alleles) {
+                    const sortedPair = [a1, a2].sort().join('');
+                    if (sortedPair === 'AO') possibleTypes.add('A');
+                    if (sortedPair === 'BO') possibleTypes.add('B');
+                    if (sortedPair === 'AB') possibleTypes.add('AB');
+                    if (sortedPair === 'OO') possibleTypes.add('O');
+                }
+            }
+
+            // Calculate Rh factor combinations
+            for (const r1 of parent1RhAlleles) {
+                for (const r2 of parent2RhAlleles) {
+                    if (r1 === '+' || r2 === '+') {
+                        possibleRh.add('+');
+                    } else {
+                        possibleRh.add('-');
+                    }
+                }
+            }
+
+            // Generate final results
+            const results = [];
+            possibleTypes.forEach(type => {
+                possibleRh.forEach(rh => {
+                    results.push(`${type}${rh}`);
+                });
+            });
+
+            // Display results
+            const resultBox = document.getElementById('result-box');
+            if (results.length > 0) {
+                const formattedResults = results.map(result => 
+                    `<span class="bg-red-200 text-red-800 font-bold px-3 py-1.5 rounded-full shadow-sm text-sm sm:text-base">${result}</span>`
+                ).join(' ');
+
+                resultBox.innerHTML = `
+                    <div class="text-center">
+                        <p class="text-lg font-semibold text-gray-700 mb-2">Possible Blood Types:</p>
+                        <div class="flex flex-wrap justify-center items-center gap-2">
+                            ${formattedResults}
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultBox.innerHTML = `<p class="text-center text-gray-500 italic text-lg">Unable to calculate possibilities.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
